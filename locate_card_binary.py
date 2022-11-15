@@ -7,16 +7,7 @@ def locate_card_binary(cards, query):
         mid = (lo + hi) // 2
 
         mid_number = cards[mid]
-        print(
-        "lo: ",
-        lo,
-        "\n" "hi: ",
-        hi,
-        "\n" "mid: ",
-        mid,
-        "\n" "mid_number: ",
-        mid_number,
-    )
+        print("lo: ", lo, "hi: ", hi, "mid: ", mid, "mid_number: ", mid_number)
 
         if query == mid_number:
             return mid
