@@ -19,11 +19,6 @@ def parse_turple(data):
 
 tree2 = parse_turple(tree_turple)
 
-# print(tree2.key)
-# print(tree2.left.key, tree2.right.key)
-# print(tree2.left.left.key, tree2.left.right, tree2.right.left.key, tree2.right.right.key)
-# print(tree2.right.left.left, tree2.right.left.right.key, tree2.right.right.left.key, tree2.right.right.right.key)
-
 def tree_to_turple(node):
     if isinstance(node, TreeNode):
         turple = tree_to_turple((node.left.key, node.key, node.right.key))
@@ -32,6 +27,23 @@ def tree_to_turple(node):
     else:
         turple = node
     print(turple)
+
+def display_keys(node, space="\t", level=0):
+
+    # If node is empty
+    if node is None:
+        print(space*level + "ø")
+        return
+    
+    # If the node is a leaf
+    if node.left is None and node.right is None:
+        print(space*level + str(node.key))
+        return
+
+    # If the node has children
+    display_keys(node.right, space, level+1)
+    print(space*level + str(node.key))
+    display_keys(node.left, space, level+1)
 
 def traverse_in_order(node):
     if node is None:
@@ -48,6 +60,7 @@ def traverse_post_order(node):
         return []
     return traverse_post_order(node.right) + traverse_post_order(node.left) + [node.key]
 
+display_keys(tree2, "    ")
 traverse_in_order = traverse_in_order(tree2)
 traverse_pre_order = traverse_pre_order(tree2)
 traverse_post_order = traverse_post_order(tree2)
