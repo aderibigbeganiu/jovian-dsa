@@ -1,4 +1,4 @@
-from jovian.pythondsa import evaluate_test_cases, evaluate_test_case
+# from jovian.pythondsa import evaluate_test_cases, evaluate_test_case
 
 
 def test_location(cards, query, mid):
@@ -13,7 +13,8 @@ def test_location(cards, query, mid):
     else:
         return "right"
 
-def locate_card_binary(cards, query):
+def binary_search(cards, query):
+    """BINARY SEARCH"""
     lo, hi = 0, len(cards) - 1
 
     while lo <= hi:
@@ -27,11 +28,3 @@ def locate_card_binary(cards, query):
         elif result == "right":
             lo = mid + 1
     return -1
-
-tests = [
-    {"input": {"cards": [1, 4, 5, 6, 7, 9, 10, 24], "query": 5}, "output": 2},
-    {"input": {"cards": [1, 4, 5, 5, 6, 7, 9, 10, 24], "query": 5}, "output": 2},
-    {"input": {"cards": [], "query": 5}, "output": -1},
-]
-
-evaluate_test_cases(locate_card_binary, tests)
